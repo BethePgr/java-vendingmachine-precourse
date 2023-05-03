@@ -22,7 +22,6 @@ public enum Coin {
     public static int getRandomCoin(){
         List<Integer> coins = Arrays.stream(Coin.values()).map(coin -> coin.amount)
             .collect(Collectors.toList());
-
         return Randoms.pickNumberInList(coins);
     }
 
