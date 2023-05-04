@@ -7,7 +7,7 @@ import vendingmachine.util.UtilService;
 
 public class VendingMachine {
 
-    private Map<Integer, Integer> coinMap = new HashMap<>();
+    private Map<Integer, Integer> coinMap;
     private final int money;
     private Map<Product, Integer> itemMap = new HashMap<>();
 
