@@ -3,6 +3,8 @@ package vendingmachine.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import vendingmachine.service.VendingMachineService;
+import vendingmachine.validate.InputBuyingItemValidation;
 import vendingmachine.validate.InputClientMoneyValidation;
 import vendingmachine.validate.InputItemsValidation;
 import vendingmachine.validate.InputMoneyValidation;
@@ -40,6 +42,17 @@ public class InputController {
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return clientToMachineMoney();
+        }
+    }
+
+    public static String clientBuyingItem(int money,VendingMachineService vendingMachineService){
+        try{
+            String input = InputView.inputBuyingItem(money);
+            InputBuyingItemValidation.checkBuyingItem(vendingMachineService,input);
+            return input;
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return clientBuyingItem(money,vendingMachineService);
         }
     }
 }

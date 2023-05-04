@@ -20,4 +20,7 @@ public class VendingMachineService {
             .min((e1, e2) -> e1.getKey().getPrice() - e2.getKey().getPrice()).get().getKey().getPrice();
     }
 
+    public VendingMachine getVendingMachine(){
+        return vendingMachine;
+    }
 }
