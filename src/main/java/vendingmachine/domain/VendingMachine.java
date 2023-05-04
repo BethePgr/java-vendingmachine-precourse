@@ -3,6 +3,7 @@ package vendingmachine.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import vendingmachine.util.UtilService;
 
 public class VendingMachine {
 
@@ -10,28 +11,10 @@ public class VendingMachine {
     private final int money;
     private Map<Product, Integer> itemMap = new HashMap<>();
 
-    public VendingMachine(int money) {
+    public VendingMachine(int money,Map<Integer, Integer> coinMap,List<String> itemList) {
         this.money = money;
-        initMap();
-        makeCoinListWithRandoms();
-    }
-
-    private void initMap() {
-
-        for (Coin coin : Coin.values()) {
-            coinMap.put(coin.getAmount(), 0);
-        }
-    }
-
-    private void makeCoinListWithRandoms() {
-        int tempMoney = money;
-        while (tempMoney != 0) {
-            int randomCoin = Coin.getRandomCoin();
-            if (tempMoney >= randomCoin) {
-                coinMap.put(randomCoin, coinMap.get(randomCoin) + 1);
-                tempMoney -= randomCoin;
-            }
-        }
+        this.coinMap = coinMap;
+        makeItemMap(itemList);
     }
 
     private void makeItemMap(List<String> itemList) {
@@ -39,7 +22,7 @@ public class VendingMachine {
             item = item.substring(1, item.length() - 1);
             String[] splits = item.split(",");
             itemMap.put(new Product(splits[0], Integer.parseInt(splits[1])),
-                Integer.parseInt(splits[3]));
+                Integer.parseInt(splits[2]));
         }
     }
 

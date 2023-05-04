@@ -12,7 +12,6 @@ public class OutputView {
             .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
             .forEach(entry -> System.out.println(entry.getKey()+"원 - "+ entry.getValue()+"개"));
 
-
     }
 
 }
