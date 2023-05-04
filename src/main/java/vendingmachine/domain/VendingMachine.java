@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class VendingMachine {
 
-    private Map<Integer, Integer> coinMap;
+    private Map<Integer, Integer> coinMap = new HashMap<>();
     private final int money;
-    private Map<Product, Integer> itemMap;
+    private Map<Product, Integer> itemMap = new HashMap<>();
 
     public VendingMachine(int money) {
         this.money = money;
@@ -17,7 +17,7 @@ public class VendingMachine {
     }
 
     private void initMap() {
-        coinMap = new HashMap<>();
+
         for (Coin coin : Coin.values()) {
             coinMap.put(coin.getAmount(), 0);
         }
