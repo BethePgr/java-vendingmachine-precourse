@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class InputValidationTest {
+class InputMoneyValidationTest {
 
     @Test
     @DisplayName("10으로 나누어지지 않으므로 에러를 발생시킨다.")
@@ -13,7 +13,7 @@ class InputValidationTest {
         //given
         String input = "11";
         //then
-        assertThrows(IllegalArgumentException.class,() -> InputValidation.validateMachineHavingMoney(input));
+        assertThrows(IllegalArgumentException.class,() -> InputMoneyValidation.validateMachineHavingMoney(input));
     }
 
     @Test
@@ -22,7 +22,7 @@ class InputValidationTest {
         //given
         String input = "ab10";
         //then
-        assertThrows(IllegalArgumentException.class,()->InputValidation.validateMachineHavingMoney(input));
+        assertThrows(IllegalArgumentException.class,()-> InputMoneyValidation.validateMachineHavingMoney(input));
     }
 
     @Test
@@ -31,7 +31,7 @@ class InputValidationTest {
         //given
         String input = "10";
         //then
-        assertDoesNotThrow(() -> InputValidation.validateMachineHavingMoney(input));
+        assertDoesNotThrow(() -> InputMoneyValidation.validateMachineHavingMoney(input));
     }
     @Test
     @DisplayName("10으로 나누어 떵러지면서 숫자로만 이루어져 있으므로 에러를 발생시키지 않는다.")
@@ -39,6 +39,6 @@ class InputValidationTest {
         //given
         String input = "120";
         //then
-        assertDoesNotThrow(() -> InputValidation.validateMachineHavingMoney(input));
+        assertDoesNotThrow(() -> InputMoneyValidation.validateMachineHavingMoney(input));
     }
 }

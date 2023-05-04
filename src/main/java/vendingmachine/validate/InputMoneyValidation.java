@@ -1,6 +1,6 @@
 package vendingmachine.validate;
 
-public class InputValidation {
+public class InputMoneyValidation {
 
     public static void validateMachineHavingMoney(String input){
         if(isInputEqualsNumber(input)){
