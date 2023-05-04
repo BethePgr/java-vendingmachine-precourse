@@ -1,6 +1,10 @@
 package vendingmachine.controller;
 
-import vendingmachine.validate.InputValidation;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import vendingmachine.validate.InputItemsValidation;
+import vendingmachine.validate.InputMoneyValidation;
 import vendingmachine.view.InputView;
 
 public class InputController {
@@ -8,11 +12,22 @@ public class InputController {
     public static int machineHavingMoney(){
         try{
             String input = InputView.inputMachineHavingMoney();
-            InputValidation.validateMachineHavingMoney(input);
+            InputMoneyValidation.validateMachineHavingMoney(input);
             return Integer.parseInt(input);
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
             return machineHavingMoney();
+        }
+    }
+
+    public static List<String> machineHavingItems(){
+        try{
+            String input = InputView.inputMachineHavingItems();
+            InputItemsValidation.checkItems(input);
+            return Arrays.stream(input.split(";")).collect(Collectors.toList());
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return machineHavingItems();
         }
     }
 }

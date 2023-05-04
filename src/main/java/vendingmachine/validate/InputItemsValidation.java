@@ -39,7 +39,7 @@ public class InputItemsValidation {
         throw new IllegalArgumentException("[ERROR] 가격은 100보다 크면서 10으로 나누어 떨어져야합니다.");
     }
 
-    public static void notZero(String input){
+    private static void notZero(String input){
         if(onlyNumber(input)){
             if(Integer.parseInt(input) != 0){
                 return;
