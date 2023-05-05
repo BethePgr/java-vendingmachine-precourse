@@ -2,6 +2,10 @@ package vendingmachine.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +20,9 @@ class VendingMachineTest {
         int realMoney = (int)((Math.random()+1)*10000);
         realMoney = realMoney - realMoney%10;
         for(int i = 0;i<5000;i++) {
-            VendingMachine vendingMachine = new VendingMachine(realMoney);
+            Map<Integer, Integer> coinMap = new HashMap<>();
+            List<String> itemList = new ArrayList<>();
+            VendingMachine vendingMachine = new VendingMachine(realMoney,coinMap,itemList);
             int expectMoney = 0;
             for (Entry<Integer, Integer> entry : vendingMachine.getCoinList().entrySet()) {
                 expectMoney += entry.getKey() * entry.getValue();
