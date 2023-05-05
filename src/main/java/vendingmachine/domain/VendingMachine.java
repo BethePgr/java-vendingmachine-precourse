@@ -26,7 +26,7 @@ public class VendingMachine {
         }
     }
 
-    public Map<Integer, Integer> getCoinList() {
+    public Map<Integer, Integer> getCoinMap() {
         return coinMap;
     }
 

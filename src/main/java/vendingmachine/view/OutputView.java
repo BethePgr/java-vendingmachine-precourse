@@ -12,7 +12,8 @@ public class OutputView {
 
     }
 
-    public static void printCalculateCharge(Map<Integer, Integer> coinMap){
+    public static void printCalculateCharge(Map<Integer, Integer> coinMap,int clientMoney){
+        System.out.println("투입 금액: " + clientMoney + "원");
         System.out.println("잔돈");
         printSortedMap(coinMap);
     }

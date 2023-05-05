@@ -47,7 +47,7 @@ public class VendingMachineService {
     }
 
     public Map<Integer,Integer> calculateCharge(){
-        Map<Integer, Integer> coinMap = vendingMachine.getCoinList();
+        Map<Integer, Integer> coinMap = vendingMachine.getCoinMap();
         Set<Integer> keys = coinMap.keySet();
         for(int key : keys){
             while(coinMap.get(key) != 0 || clientMoney !=0){
