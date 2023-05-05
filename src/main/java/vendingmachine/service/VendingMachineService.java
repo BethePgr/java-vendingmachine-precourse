@@ -1,6 +1,12 @@
 package vendingmachine.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import vendingmachine.domain.Coin;
 import vendingmachine.domain.Product;
 import vendingmachine.domain.VendingMachine;
 
@@ -39,6 +45,19 @@ public class VendingMachineService {
             throw new IllegalArgumentException("[ERROR] 상품 가격이 더 남은 고객의 금액보다 비쌉니다.");
         }
     }
+
+    public Map<Integer,Integer> calculateCharge(){
+        Map<Integer, Integer> coinMap = vendingMachine.getCoinList();
+        Set<Integer> keys = coinMap.keySet();
+        for(int key : keys){
+            while(coinMap.get(key) != 0 || clientMoney !=0){
+                coinMap.put(key,coinMap.get(key)-1);
+                clientMoney-=key;
+            }
+        }
+        return coinMap;
+    }
+
 
     public VendingMachine getVendingMachine(){
         return vendingMachine;
