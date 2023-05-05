@@ -2,6 +2,7 @@ package vendingmachine.controller;
 
 import java.util.List;
 import java.util.Map;
+import vendingmachine.domain.Coin;
 import vendingmachine.domain.VendingMachine;
 import vendingmachine.service.VendingMachineService;
 import vendingmachine.util.UtilService;
@@ -21,6 +22,8 @@ public class VendingMachineController {
             String itemPrice = InputController.clientBuyingItem(vendingMachineService.getClientMoney(), vendingMachineService);
             vendingMachineService.pickOneItem(itemPrice);
         }
+        OutputView.printCalculateCharge(vendingMachine.getCoinMap(),
+            vendingMachineService.getClientMoney());
     }
 
 }
