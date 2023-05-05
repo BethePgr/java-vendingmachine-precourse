@@ -13,19 +13,18 @@ public enum Coin {
 
     private final int amount;
 
-
     Coin(final int amount) {
         this.amount = amount;
     }
 
     // 추가 기능 구현
-    public static int getRandomCoin(){
+    public static int getRandomCoin() {
         List<Integer> coins = Arrays.stream(Coin.values()).map(coin -> coin.amount)
             .collect(Collectors.toList());
         return Randoms.pickNumberInList(coins);
     }
 
-    public int getAmount(){
+    public int getAmount() {
         return amount;
     }
 }

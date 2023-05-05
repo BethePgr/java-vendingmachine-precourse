@@ -10,36 +10,39 @@ import vendingmachine.view.OutputView;
 
 public class VendingMachineController {
 
-    public void run(){
+    public void run() {
         VendingMachineService vmService = preService();
         buyItems(vmService);
         OutputView.printCalculateCharge(vmService.getVendingMachine().getCoinMap(),
             vmService.getClientMoney());
     }
 
-    private Map<Integer,Integer> makeCoinMap(int money){
+    private Map<Integer, Integer> makeCoinMap(int money) {
         Map<Integer, Integer> coinMap = UtilService.makeCoinListWithRandoms(money);
         OutputView.printCoinMap(coinMap);
         return coinMap;
     }
 
-    private VendingMachineService preService(){
+    private VendingMachineService preService() {
         int money = InputController.machineHavingMoney();
         Map<Integer, Integer> coinMap = makeCoinMap(money);
         List<String> items = InputController.machineHavingItems();
-        return makeVendingMachineService(money, coinMap,items);
+        return makeVendingMachineService(money, coinMap, items);
     }
 
-    private VendingMachineService makeVendingMachineService(int money,Map<Integer,Integer> coinMap,List<String> items){
+    private VendingMachineService makeVendingMachineService(int money,
+        Map<Integer, Integer> coinMap, List<String> items) {
         VendingMachine vendingMachine = new VendingMachine(money, coinMap, items);
         return new VendingMachineService(vendingMachine,
             InputController.clientToMachineMoney());
     }
 
-    private void buyItems(VendingMachineService vmService){
-        while(vmService.getClientMoney() >= vmService.findLeastPrice()){
-            String itemPrice = InputController.clientBuyingItem(vmService.getClientMoney(), vmService);
+    private void buyItems(VendingMachineService vmService) {
+        while (vmService.getClientMoney() >= vmService.findLeastPrice()) {
+            String itemPrice = InputController.clientBuyingItem(vmService.getClientMoney(),
+                vmService);
             vmService.pickOneItem(itemPrice);
         }
     }
+
 }

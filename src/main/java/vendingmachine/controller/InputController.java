@@ -12,49 +12,48 @@ import vendingmachine.view.InputView;
 
 public class InputController {
 
-    public static int machineHavingMoney(){
-        try{
+    public static int machineHavingMoney() {
+        try {
             String input = InputView.inputMachineHavingMoney();
             InputMoneyValidation.validateMachineHavingMoney(input);
             return Integer.parseInt(input);
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return machineHavingMoney();
         }
     }
 
-    public static List<String> machineHavingItems(){
-        try{
+    public static List<String> machineHavingItems() {
+        try {
             String input = InputView.inputMachineHavingItems();
             InputItemsValidation.checkItems(input);
             return Arrays.stream(input.split(";")).collect(Collectors.toList());
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return machineHavingItems();
         }
     }
 
-    public static int clientToMachineMoney(){
-        try{
+    public static int clientToMachineMoney() {
+        try {
             String input = InputView.inputClientMoney();
             InputClientMoneyValidation.checkClientMoney(input);
             return Integer.parseInt(input);
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return clientToMachineMoney();
         }
     }
 
-    public static String clientBuyingItem(int clientMoney,VendingMachineService vendingMachineService){
-        try{
+    public static String clientBuyingItem(int clientMoney,
+        VendingMachineService vendingMachineService) {
+        try {
             String input = InputView.inputBuyingItem(clientMoney);
-            InputBuyingItemValidation.checkBuyingItem(vendingMachineService,input);
+            InputBuyingItemValidation.checkBuyingItem(vendingMachineService, input);
             return input;
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return clientBuyingItem(clientMoney,vendingMachineService);
+            return clientBuyingItem(clientMoney, vendingMachineService);
         }
     }
-
-
 }

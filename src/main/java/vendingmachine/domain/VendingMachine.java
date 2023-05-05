@@ -11,7 +11,7 @@ public class VendingMachine {
     private final int money;
     private Map<Product, Integer> itemMap = new HashMap<>();
 
-    public VendingMachine(int money,Map<Integer, Integer> coinMap,List<String> itemList) {
+    public VendingMachine(int money, Map<Integer, Integer> coinMap, List<String> itemList) {
         this.money = money;
         this.coinMap = coinMap;
         makeItemMap(itemList);
@@ -30,11 +30,11 @@ public class VendingMachine {
         return coinMap;
     }
 
-    public Map<Product,Integer> getItemMap(){
+    public Map<Product, Integer> getItemMap() {
         return itemMap;
     }
 
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
 }
