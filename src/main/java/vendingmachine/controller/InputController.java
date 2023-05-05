@@ -45,14 +45,16 @@ public class InputController {
         }
     }
 
-    public static String clientBuyingItem(int money,VendingMachineService vendingMachineService){
+    public static String clientBuyingItem(int clientMoney,VendingMachineService vendingMachineService){
         try{
-            String input = InputView.inputBuyingItem(money);
+            String input = InputView.inputBuyingItem(clientMoney);
             InputBuyingItemValidation.checkBuyingItem(vendingMachineService,input);
             return input;
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
-            return clientBuyingItem(money,vendingMachineService);
+            return clientBuyingItem(clientMoney,vendingMachineService);
         }
     }
+
+
 }
