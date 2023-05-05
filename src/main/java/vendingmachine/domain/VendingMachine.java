@@ -33,4 +33,8 @@ public class VendingMachine {
     public Map<Product,Integer> getItemMap(){
         return itemMap;
     }
+
+    public int getMoney(){
+        return money;
+    }
 }
